@@ -29,6 +29,7 @@ const findAll = async (req, res) => {
     ? { name: { $regex: new RegExp(name), $options: 'i' } }
     : {};
   const search = await gradesModel.find(condition);
+  console.log('teste busca rolando...');
   res.send(search);
   try {
     logger.info(`GET /grade`);
