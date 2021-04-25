@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import cors from 'cors';
+// import cors from 'cors';
 import { db } from './models/index.js';
 import { gradeRouter } from './routes/gradeRouter.js';
 import dotenv from 'dotenv';
@@ -21,16 +21,16 @@ dotenv.config();
 })();
 
 const app = express();
+// app.use((req, res, next) => {
+//   //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+//   res.header('Access-Control-Allow-Origin', '*');
+//   //Quais são os métodos que a conexão pode realizar na API
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+//   app.use(cors());
+//   next();
+// });
 app.use(express.json());
 app.use(gradeRouter);
-app.use((req, res, next) => {
-  //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
-  res.header('Access-Control-Allow-Origin', '*');
-  //Quais são os métodos que a conexão pode realizar na API
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  app.use(cors());
-  next();
-});
 
 //define o dominio de origem para consumo do servico
 app.use(bodyParser.json());
