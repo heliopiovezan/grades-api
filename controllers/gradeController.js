@@ -64,11 +64,12 @@ const update = async (req, res) => {
 
   const updateGrade = await gradesModel.findOneAndUpdate(
     { _id: id },
-    dataUpdate,
+    { $set: dataUpdate },
     { new: true }
   );
+  console.log(req.body);
   res.send(updateGrade);
-
+  // res.send(req.body);
   try {
     logger.info(`PUT /grade - ${id} - ${JSON.stringify(req.body)}`);
   } catch (error) {
