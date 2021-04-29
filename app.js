@@ -13,7 +13,7 @@ dotenv.config();
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('its aliiiiive!');
+    console.log('its aliiiiivelocal!');
   } catch (error) {
     console.log('its death x(' + error);
     process.exit();
